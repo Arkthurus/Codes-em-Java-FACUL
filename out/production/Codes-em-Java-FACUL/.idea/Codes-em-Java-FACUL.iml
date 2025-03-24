@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Funções em Java/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Introducao a POO/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Modificadore de acesso/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
