@@ -86,6 +86,7 @@ class Produto{
             if (novoQTD>0){
                 this.qtd+=novoQTD;
                 System.out.printf("nova QTD atribuida com sucesso!\n");
+
                 break;
             }
         }
