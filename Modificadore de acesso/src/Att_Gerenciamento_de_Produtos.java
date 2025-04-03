@@ -12,16 +12,17 @@ public class Att_Gerenciamento_de_Produtos {
 
         int escolha;
 
+        System.out.printf("+---------------------------------+\n");
+        System.out.printf("|       Selecione um Protudo      |\n");
+        System.out.printf("+---------------------------------+\n");
+        System.out.printf("| 1- RTX 4090 ti SUPER            |\n");
+        System.out.printf("| 2- Sabonete                     |\n");
+        System.out.printf("| 3- PS8 PRO                      |\n");
+        System.out.printf("+---------------------------------+\n");
+        System.out.printf("|           4- Encerrar           |\n");
+        System.out.printf("+---------------------------------+\n");
         while (true){
-            System.out.printf("+---------------------------------+\n");
-            System.out.printf("|       Selecione um Protudo      |\n");
-            System.out.printf("+---------------------------------+\n");
-            System.out.printf("| 1- RTX 4090 ti SUPER            |\n");
-            System.out.printf("| 2- Sabonete                     |\n");
-            System.out.printf("| 3- PS8 PRO                      |\n");
-            System.out.printf("+---------------------------------+\n");
-            System.out.printf("|           4- Encerrar           |\n");
-            System.out.printf("+---------------------------------+\n");
+
             escolha = scanner.nextInt();
             if (escolha==1){p1.mostrarInfos(p1.getNome(), p1.getPreco(), p1.getQtd());}
             if (escolha==2){p2.mostrarInfos(p2.getNome(), p2.getPreco(), p2.getQtd());}

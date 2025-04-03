@@ -4,13 +4,13 @@ public class MetodosFuncoes_Especiais {
     }
 }
 class Carro{
-    String modelo;
-    String cor;
-    int ano;
-    int km;
-    float preco;
+    private String modelo;
+    private String cor;
+    private int km;
+    private float preco;
 
     //Constructor(define as variaveis por ordem)
+    private int ano;
     public Carro(String modelo, String cor, int ano, int km, float preco){
         this.modelo = modelo;
         this.cor = cor;
@@ -40,17 +40,8 @@ class Carro{
     public String getModelo() {
         return modelo;
     }
-    public String gerCor(){
-
-        return cor;
-    }
-    public int getAno() {
-        return ano;
-    }
-    public int getKm() {
-        return km;
-    }
-    public float getPreco() {
-        return preco;
-    }
+    public String gerCor(){return cor;}
+    public int getAno() {return ano;}
+    public int getKm() {return km;}
+    public float getPreco() {return preco;}
 }
