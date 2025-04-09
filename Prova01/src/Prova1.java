@@ -31,40 +31,44 @@ public class Prova1 {
 
     }
 
+
+
     protected static void menuCarro(CARROS carro){
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println();
-        System.out.printf("+--------------------------+\n");
-        System.out.printf("+----------%s----------+\n", carro.getModelo());
-        System.out.printf("+--------------------------+\n");
-        System.out.printf("| - modelo: %s              \n", carro.getModelo());
-        System.out.printf("|                          |\n");
-        System.out.printf("| - cor: %s\n", carro.getCor());
-        System.out.printf("|                          |\n");
-        System.out.printf("| - ano: %d\n", carro.getAno());
-        System.out.printf("|                          |\n");
-        System.out.printf("| - VelMax: %d\n", carro.getVelMax());
-        System.out.printf("|                          |\n");
-        System.out.printf("| - Veltual: %d\n", carro.getVelAtual());
-        System.out.printf("|                          |\n");
-        System.out.printf("+--------------------------+\n");
-        System.out.printf("|  [1]+vel [2]-vel [3]Info |\n");
-        System.out.printf("|          [4]sair         |\n");
-        System.out.printf("+--------------------------+\n");
-        int escolhaVoltar= sc.nextByte();
-        if (escolhaVoltar == 1) {
-            aumentearVel(carro);
-        }
-        if (escolhaVoltar==2){
-            diminuirVel(carro);
-        }
-        if (escolhaVoltar==3){
-            mostrarInfo(carro);
-        }
-        if (escolhaVoltar==4){
-            System.exit(1);
+        while (true){
+            System.out.println();
+            System.out.printf("+--------------------------+\n");
+            System.out.printf("+----------%s----------+\n", carro.getModelo());
+            System.out.printf("+--------------------------+\n");
+            System.out.printf("| - modelo: %s              \n", carro.getModelo());
+            System.out.printf("|                          |\n");
+            System.out.printf("| - cor: %s\n", carro.getCor());
+            System.out.printf("|                          |\n");
+            System.out.printf("| - ano: %d\n", carro.getAno());
+            System.out.printf("|                          |\n");
+            System.out.printf("| - VelMax: %d\n", carro.getVelMax());
+            System.out.printf("|                          |\n");
+            System.out.printf("| - Veltual: %d\n", carro.getVelAtual());
+            System.out.printf("|                          |\n");
+            System.out.printf("+--------------------------+\n");
+            System.out.printf("|  [1]+vel [2]-vel [3]Info |\n");
+            System.out.printf("|          [4]sair         |\n");
+            System.out.printf("+--------------------------+\n");
+            int escolhaVoltar= sc.nextByte();
+            if (escolhaVoltar == 1) {
+                aumentearVel(carro);
+            }
+            if (escolhaVoltar==2){
+                diminuirVel(carro);
+            }
+            if (escolhaVoltar==3){
+                mostrarInfo(carro);
+            }
+            if (escolhaVoltar==4){
+                break;
+            }
         }
 
 
