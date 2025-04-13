@@ -116,12 +116,12 @@ public class ExemploProf2MinhaTentaviaMenu{
 
                         totalPedido += item.quantidade * item.precoUnitario;
                     }
-
                     System.out.printf("Valor total do pedido: R$ %.2f\n", totalPedido);
                     System.out.println("----------------------------------------------------");
-                    System.out.printf("[1]voltar");
-                    int escolha2 = sc.nextInt();
                 }
+
+                System.out.printf("[1]voltar");
+                int escolha2 = sc.nextInt();
             }
             if (escolha==3){break;}
         }
@@ -141,16 +141,18 @@ class Cliente {
         this.endereco = endereco;
     }
 
+
+
     /* Getters */
-    public String getNome(){
+    protected String getNome(){
         return this.nome;
     }
 
-    public String getEmail(){
+    protected String getEmail(){
         return this.email;
     }
 
-    public String getEndereco(){
+    protected String getEndereco(){
         return this.endereco;
     }
 

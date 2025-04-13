@@ -10,6 +10,7 @@ public class ExemploProf2 {
         /* Criando um pedido associado ao cliente */
         Pedido2 pedido1 = new Pedido2(1, cliente1);
 
+
         /* Adicionando itens à lista de itens do pedido */
         pedido1.itens.add(new ItemPedido("Produto A", 1, 50.75));
         pedido1.itens.add(new ItemPedido("Produto B", 2, 80.00));
