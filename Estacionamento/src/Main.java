@@ -144,17 +144,18 @@ class RECIBO{
     private String data;
     private LocalTime entrada;
     private LocalTime saida;
-    private float Valor;
+    private float valor;
 
     //CONSTRUCTOR
     public RECIBO(String data, LocalTime entrada, LocalTime saida, float valor){
         this.data=data;
         this.entrada=entrada;
         this.saida=saida;
+        this.valor=valor;
     }
     //GETTERS
     public String getData(){return data;}
     public LocalTime getEntrada(){return entrada;}
     public LocalTime getSaida() {return saida;}
-    public float getValor() {return Valor;}
+    public float getValor() {return valor;}
 }
