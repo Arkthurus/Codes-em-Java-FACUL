@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -43,12 +44,16 @@ public class ExLivraria {
 
     protected static void newEmprestimo(CLIENTE cliente){
 
+        LocalDate hoje = LocalDate.now();
+
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         Scanner sc = new Scanner(System.in);
 
         System.out.printf("Deseja  inserir um novo emprestimo?[S/N]\n");
         String escolha = sc.nextLine();
         if (escolha.equalsIgnoreCase("N")){return;}
-        cliente.emprestimos.add(new EMPRESTIMO(cliente.emprestimos.size(), cliente, new GregorianCalendar()));
+        cliente.emprestimos.add(new EMPRESTIMO(cliente.emprestimos.size(), cliente, hoje.format(formato)));
         while (true){
             System.out.printf("Informe o Titulo: ");
             String titulo = sc.nextLine();
@@ -94,7 +99,7 @@ public class ExLivraria {
                 for (int i = 0; i < cliente.emprestimos.size(); i++) {
 
                     System.out.println("Numero do Emprestimo: " + (i+1));
-                    System.out.println("Data: " + cliente.emprestimos.get(i).getDATA().getTime());
+                    System.out.println("Data: " + cliente.emprestimos.get(i).getDATA());
                     System.out.println();
                     System.out.println("Livros Emprestados: ");
                     System.out.println();
@@ -154,10 +159,10 @@ class EMPRESTIMO{
     private int numEmprestimo;
     private CLIENTE cliente;
     public ArrayList<LIVRO> livros =  new ArrayList<>();
-    private GregorianCalendar DATA;
+    private String DATA;
 
     //Constructor
-    public EMPRESTIMO(int numEmprestimo, CLIENTE cliente, GregorianCalendar DATA) {
+    public EMPRESTIMO(int numEmprestimo, CLIENTE cliente, String DATA) {
         this.numEmprestimo = numEmprestimo;
         this.cliente = cliente;
         this.DATA = DATA;
@@ -165,6 +170,6 @@ class EMPRESTIMO{
     //getters
     public int getNumEmprestimo() {return numEmprestimo;}
     public CLIENTE getCliente() {return cliente;}
-    public GregorianCalendar getDATA() {return DATA;}
+    public String getDATA() {return DATA;}
 
 }
