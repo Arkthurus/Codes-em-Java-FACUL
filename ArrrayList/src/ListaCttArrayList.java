@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class ListaCttArrayList {
@@ -43,7 +42,7 @@ public class ListaCttArrayList {
                         System.out.printf("|=====================================|\n");
                         System.out.printf("|       Lista de Contatos Cheia       |\n");
                         System.out.printf("|=====================================|\n");
-                        System.out.printf("\\-------------------------------------/\n");;
+                        System.out.printf("\\-------------------------------------/\n");
                         System.out.println();
                         System.out.println();
                         System.out.println();
@@ -61,7 +60,7 @@ public class ListaCttArrayList {
                         System.out.printf("|                                        |\n");
                         System.out.printf("| Informe Telefone: ");
                         String telefone = input.nextLine();
-                        System.out.printf("\\________________________________________/\n");;
+                        System.out.printf("\\________________________________________/\n");
                         System.out.println();
                         contato.add(new Contato(nome , telefone));
                         System.out.println();
@@ -71,7 +70,7 @@ public class ListaCttArrayList {
                         System.out.printf("|=====================================|\n");
                         System.out.printf("|   Contato cadastrado com sucesso!   |\n");
                         System.out.printf("|=====================================|\n");
-                        System.out.printf("\\_____________________________________/\n");;
+                        System.out.printf("\\_____________________________________/\n");
 
                         numContatos++;
                     }
@@ -86,7 +85,7 @@ public class ListaCttArrayList {
                         System.out.printf("|=====================================|\n");
                         System.out.printf("|      Nenhum contato existente       |\n");
                         System.out.printf("|=====================================|\n");
-                        System.out.printf("\\_____________________________________/\n");;
+                        System.out.printf("\\_____________________________________/\n");
 
                     }
                     else {
@@ -94,7 +93,7 @@ public class ListaCttArrayList {
                         System.out.printf("/                                        \\ \n");
                         System.out.printf("|Informe o nome da busca: ");
                         String nomeBusca = input.nextLine();
-                        System.out.printf("\\________________________________________/\n");;
+                        System.out.printf("\\________________________________________/\n");
 
 
                         boolean encontrou = false;
@@ -111,7 +110,7 @@ public class ListaCttArrayList {
                                 System.out.println("| Nome: " + contato.get(i).getNome());
                                 System.out.println("|                                      |");
                                 System.out.println("| Telefone: " + contato.get(i).getTelefone());
-                                System.out.println("\\______________________________________/");;
+                                System.out.println("\\______________________________________/");
                                 encontrou = true;
                                 break;
                             }
@@ -126,7 +125,7 @@ public class ListaCttArrayList {
                             System.out.printf("|===========================|\n");
                             System.out.printf("|    contato inexistente!   |\n");
                             System.out.printf("|===========================|\n");
-                            System.out.printf("\\___________________________/\n");;
+                            System.out.printf("\\___________________________/\n");
                         }
                     }
                     break;
@@ -210,7 +209,7 @@ public class ListaCttArrayList {
                         System.out.printf("|===========================|\n");
                         System.out.printf("| Nenhum contato existente! |\n");
                         System.out.printf("|===========================|\n");
-                        System.out.printf("\\___________________________/\n");;
+                        System.out.printf("\\___________________________/\n");
                         break;
                     }
                     System.out.println();
@@ -221,13 +220,14 @@ public class ListaCttArrayList {
                     System.out.printf("|Digite o nome do contato para excluir: \n");
                     String nomeExcluir = input.nextLine();
                     System.out.printf("|====================================================|\n");
-                    System.out.printf("\\____________________________________________________/\n");;
+                    System.out.printf("\\____________________________________________________/\n");
 
 
                     boolean encontradoEx = false;
                     for (int i = 0; i < numContatos; i++) {
                         if (contato.get(i).getNome().equalsIgnoreCase(nomeExcluir)){
                             contato.remove(i);
+                            numContatos--;
                             System.out.println();
                             System.out.println();
                             System.out.printf(" _________________________________\n");
@@ -235,7 +235,7 @@ public class ListaCttArrayList {
                             System.out.printf("|=================================|\n");
                             System.out.printf("|  Contato excluido com sucesso!  |\n");
                             System.out.printf("|=================================|\n");
-                            System.out.printf("\\_________________________________/\n");;
+                            System.out.printf("\\_________________________________/\n");
 
                             encontradoEx=true;
 
@@ -283,6 +283,8 @@ public class ListaCttArrayList {
                     }
                     System.out.printf("+----------------------------------------+ \n");
                     System.out.printf("\\________________________________________/ \n");
+                    int vorta = input.nextInt();
+
 
                     break;
 
@@ -296,4 +298,19 @@ public class ListaCttArrayList {
             }
         }
     }
+}
+class Contato{
+    private String nome;
+    private String telefone;
+
+    public Contato(String nome, String telefone){
+        this.nome=nome;
+        this.telefone=telefone;
+    }
+
+    public String getNome(){return nome;}
+    public String getTelefone(){return telefone;}
+
+    public void setNome(String nome){this.nome=nome;}
+    public void setTelefone(String telefone){this.telefone=telefone;}
 }
