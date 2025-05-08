@@ -43,7 +43,7 @@ public class ExemploProf2MinhaTentaviaMenu{
             int QTD = sc.nextInt();
             System.out.printf("Preço unitario: ");
             double precoUni = sc.nextDouble();
-            cliente.pedidos.get(cliente.pedidos.size() - 1).itens.add(new ItemPedido(nomeP, QTD, precoUni));
+            cliente.pedidos.get(cliente.pedidos.size()-1).itens.add(new ItemPedido(nomeP, QTD, precoUni));
             System.out.printf("Deseja adicionar mais um produto?\n");
             System.out.printf("[1]Sim [2]Não\n");
             int escolha = sc.nextInt();

@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class App {
@@ -28,7 +27,7 @@ public class App {
         System.out.println();
         System.out.println("--------Frota--------");
         for (var veiculo : frota) {
-            if (veiculo instanceof Carro) {
+            if (veiculo instanceof Carro) { //istanceof = se o veiculo for do tipo/instancia Carro
                 System.out.println("Carro - "+ veiculo.getMarca()+" "+veiculo.getModelo());
                 continue;
             }
@@ -37,7 +36,7 @@ public class App {
         System.out.println("---------------------");
     }
 }
-class Veiculo {
+abstract class Veiculo { //abstract a torna n instanciavel, vira um modelo para as subclasses
     private String marca;
     private String modelo;
     private int anoFabricacao;
@@ -65,15 +64,8 @@ class Veiculo {
         public void setCombustivel(double combustivel) {this.combustivel = combustivel;}
         public void setConsumoMedio(double consumoMedio) {this.consumoMedio = consumoMedio;}
     
-        public void CalcAutonomia(){
-            double Autonomia=consumoMedio*combustivel;
-            System.out.println("O Veiculo ainda pode percorrer "+Autonomia+"Km");
-        }
         public boolean PrecisaAbastecer(){
-            if ((consumoMedio*combustivel)<30) {
-                return true;
-            }
-            return false;
+            return (consumoMedio*combustivel)<30?true:false;
         }
         public void Viajar(float distancia){
             double combustivelDisp=combustivel*consumoMedio;
@@ -92,32 +84,39 @@ class Veiculo {
             System.out.println("Precisa Abastecer? "+ (PrecisaAbastecer() ? "sim" : "não"));
             System.out.println("---------------------------------------------");
         }
-        public void acelerar(){        System.out.println("---------------------------------------------");System.out.println("O Veiculo está acelerando!");System.out.println("---------------------------------------------");}
-        public void frear(){        System.out.println("---------------------------------------------");System.out.println("O Veiculo está freando!");System.out.println("---------------------------------------------");}
+        public abstract void CalcAutonomia();
+        public abstract void acelerar();
+        public abstract void frear();
         
     }
     
-    class Carro extends Veiculo{
-        //CONSTRUCTOR
-        public Carro(String marca, String modelo, int anoFabricacao, double combustivel, double consumoMedio) {
-            super(marca, modelo, anoFabricacao, combustivel, consumoMedio);
-        }
-        public void CalcAutonomia(){
-            double Autonomia=consumoMedio*combustivel;
-            System.out.println("O "+getMarca()+getModelo()+ " ainda pode percorrer "+Autonomia+"Km");
-        }
-        public void acelerar(){System.out.println("---------------------------------------------");System.out.println("O "+getMarca()+getModelo()+" está acelerando!");System.out.println("---------------------------------------------");}
-        public void frear(){System.out.println("---------------------------------------------");System.out.println("O "+getMarca()+getModelo()+" está freando!");System.out.println("---------------------------------------------");}
+class Carro extends Veiculo{
+    //CONSTRUCTOR
+    public Carro(String marca, String modelo, int anoFabricacao, double combustivel, double consumoMedio) {
+        super(marca, modelo, anoFabricacao, combustivel, consumoMedio);
     }
-    class Moto extends Veiculo{
-        //CONSTRUCTOR
-        public Moto(String marca, String modelo, int anoFabricacao, double combustivel, double consumoMedio) {
-            super(marca, modelo, anoFabricacao, combustivel, consumoMedio);
-        }
-        public void CalcAutonomia(){
-            double Autonomia=consumoMedio*combustivel;
-        System.out.println("A "+getMarca()+getModelo()+ " ainda pode percorrer "+Autonomia+"Km");
+    @Override
+    public void CalcAutonomia(){
+        double Autonomia=consumoMedio*combustivel;
+        System.out.println("O "+getMarca()+getModelo()+ " ainda pode percorrer "+Autonomia+"Km");
     }
+    @Override
+    public void acelerar(){System.out.println("---------------------------------------------");System.out.println("O "+getMarca()+getModelo()+" está acelerando!");System.out.println("---------------------------------------------");}
+    @Override
+    public void frear(){System.out.println("---------------------------------------------");System.out.println("O "+getMarca()+getModelo()+" está freando!");System.out.println("---------------------------------------------");}
+}
+class Moto extends Veiculo{
+    //CONSTRUCTOR
+    public Moto(String marca, String modelo, int anoFabricacao, double combustivel, double consumoMedio) {
+        super(marca, modelo, anoFabricacao, combustivel, consumoMedio);
+    }
+    @Override
+    public void CalcAutonomia(){
+        double Autonomia=consumoMedio*combustivel;
+    System.out.println("A "+getMarca()+getModelo()+ " ainda pode percorrer "+Autonomia+"Km");
+    }
+    @Override
     public void acelerar(){System.out.println("---------------------------------------------");System.out.println("A "+getMarca()+getModelo()+" está acelerando!");System.out.println("---------------------------------------------");}
+    @Override
     public void frear(){System.out.println("---------------------------------------------");System.out.println("A "+getMarca()+getModelo()+" está freando!");System.out.println("---------------------------------------------");}
 }

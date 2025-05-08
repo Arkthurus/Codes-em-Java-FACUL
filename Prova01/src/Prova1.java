@@ -40,7 +40,7 @@ public class Prova1 {
         while (true){
             System.out.println();
             System.out.printf("+--------------------------+\n");
-            System.out.printf("+----------%s----------+\n", carro.getModelo());
+            System.out.printf("+           %s", carro.getModelo());
             System.out.printf("+--------------------------+\n");
             System.out.printf("| - modelo: %s              \n", carro.getModelo());
             System.out.printf("|                          |\n");
@@ -50,7 +50,7 @@ public class Prova1 {
             System.out.printf("|                          |\n");
             System.out.printf("| - VelMax: %d\n", carro.getVelMax());
             System.out.printf("|                          |\n");
-            System.out.printf("| - Veltual: %d\n", carro.getVelAtual());
+            System.out.printf("| - VelAtual: %d\n", carro.getVelAtual());
             System.out.printf("|                          |\n");
             System.out.printf("+--------------------------+\n");
             System.out.printf("|  [1]+vel [2]-vel [3]Info |\n");
@@ -58,7 +58,7 @@ public class Prova1 {
             System.out.printf("+--------------------------+\n");
             int escolhaVoltar= sc.nextByte();
             if (escolhaVoltar == 1) {
-                aumentearVel(carro);
+                aumentarVel(carro);
             }
             if (escolhaVoltar==2){
                 diminuirVel(carro);
@@ -79,7 +79,7 @@ public class Prova1 {
         System.out.println();
     }
 
-    protected static void aumentearVel(CARROS carro){
+    protected static void aumentarVel(CARROS carro){
         if (carro.getVelAtual()==carro.getVelMax()){
             System.out.printf("O MOTOR N AGUENTA MAIS JA TA NO MAXIMO!!!!!\n");
             menuCarro(carro);
