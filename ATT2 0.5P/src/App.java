@@ -14,7 +14,7 @@ public class App {
         frota.get(1).frear();
         frota.get(0).CalcAutonomia();
         frota.get(1).CalcAutonomia();
-        System.out.println(frota.get(1).PrecisaAbastecer()?frota.get(0).getMarca()+frota.get(0).getModelo()+"Precisa Abastecer" : frota.get(0).getMarca()+frota.get(0).getModelo()+"Não Precisa Abastecer");        
+        System.out.println(frota.get(0).PrecisaAbastecer()?frota.get(0).getMarca()+frota.get(0).getModelo()+"Precisa Abastecer" : frota.get(0).getMarca()+frota.get(0).getModelo()+"Não Precisa Abastecer");        
         System.out.println(frota.get(1).PrecisaAbastecer()?frota.get(1).getMarca()+frota.get(1).getModelo()+"Precisa Abastecer" : frota.get(1).getMarca()+frota.get(1).getModelo()+"Não Precisa Abastecer");        
         frota.get(0).Viajar(299);        
         frota.get(1).Viajar(499);
