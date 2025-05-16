@@ -1,7 +1,11 @@
-import java.util.Objects;
+import java.io.IOException;
+import java.nio.file.*;
 import java.util.Scanner;
+;
 
 public class Main {
+
+    private static final Path CAMINHO_ARQUIVO = Paths.get("agenda.txt");
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
@@ -72,9 +76,24 @@ public class Main {
                             System.out.printf("|=====================================|\n");
                             System.out.printf("|   Contato cadastrado com sucesso!   |\n");
                             System.out.printf("|=====================================|\n");
-                            System.out.printf("\\_____________________________________/\n");;
+                            System.out.printf("\\_____________________________________/\n");
 
+                            String linha = nome + ";" + telefone;
 
+                            try {
+                                Files.write(CAMINHO_ARQUIVO,
+                                            (linha + System.lineSeparator()).getBytes(), 
+                                            StandardOpenOption.CREATE, 
+                                            StandardOpenOption.APPEND);
+                            } catch (IOException e) {
+                            System.out.printf(" _____________________________________\n");
+                            System.out.printf("/                                     \\ \n");
+                            System.out.printf("|=====================================|\n");
+                            System.out.printf("|   Erro ao add Contato: \n"+ e.getMessage() + "|");
+                            System.out.printf("|=====================================|\n");
+                            System.out.printf("\\_____________________________________/\n");
+                            break;
+                            }
 
                             numContatos++;
                             break;
@@ -138,70 +157,83 @@ public class Main {
 
                 /* Editar contato */
                 case 3:
-                    if (numContatos==0){
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.printf(" ___________________________\n");
-                        System.out.printf("/                           \\ \n");
-                        System.out.printf("|===========================|\n");
-                        System.out.printf("| Nenhum contato existente! |\n");
-                        System.out.printf("|===========================|\n");
-                        System.out.printf("\\___________________________/\n");
-                        break;
-                    }
-                    System.out.println();
-                    System.out.println();
-                    System.out.println();
-                    System.out.println();
-                    System.out.printf(" _____________________________________________________ \n");
-                    System.out.printf("/                                                     \\ \n");
-                    System.out.printf("|=====================================================|\n");
-                    System.out.printf("|Digite o nome do contato para editar: \n");
-                    String nomeEditar = input.nextLine();
-                    System.out.printf("|=====================================================|\n");
-                    System.out.printf("\\_____________________________________________________/\n");
-
-
-                    boolean encontradoEdit=false;
-                    for (int i = 0; i < numContatos; i++) {
-                        if (contato[i].getNome().equalsIgnoreCase(nomeEditar)){
+                    try {
+                        if (numContatos==0){
                             System.out.println();
                             System.out.println();
-                            System.out.printf(" ________________________________________\n");
-                            System.out.printf("/                                        \\ \n");
-                            System.out.printf("|                                        |\n");
-                            System.out.println("|Contato " + (i + 1));
-                            System.out.printf("|                                        |\n");
-                            System.out.println("|Nome: " + contato[i].getNome());
-                            System.out.printf("|Novo nome: ");
-                            String novoNome = input.nextLine();
-                            System.out.printf("|                                        |\n");
-                            contato[i].setNome(novoNome);
-                            System.out.printf("|----------------------------------------|\n");
-                            System.out.printf("|                                        |\n");
-                            System.out.println("|Telefone: " + contato[i].getTelefone() + "\n");
-                            System.out.printf("|Novo telefone: ");
-                            String novoTel = input.nextLine();
-                            contato[i].setTelefone(novoTel);
-                            System.out.printf("|----------------------------------------|\n");
-                            System.out.printf("|    Contato Alterado com sucesso!       |\n");
-                            System.out.printf("\\________________________________________/ \n");
-
-                            encontradoEdit=true;
+                            System.out.println();
+                            System.out.printf(" ___________________________\n");
+                            System.out.printf("/                           \\ \n");
+                            System.out.printf("|===========================|\n");
+                            System.out.printf("| Nenhum contato existente! |\n");
+                            System.out.printf("|===========================|\n");
+                            System.out.printf("\\___________________________/\n");
                             break;
                         }
-                    }
-                    if (encontradoEdit==false){
+                        if (!Files.exists(CAMINHO_ARQUIVO)) {
+                            System.out.printf(" ___________________________\n");
+                            System.out.printf("/                           \\ \n");
+                            System.out.printf("|===========================|\n");
+                            System.out.printf("|   Arquivo não existente!  |\n");
+                            System.out.printf("|===========================|\n");
+                            System.out.printf("\\___________________________/\n");
+                            break;
+                        }
                         System.out.println();
                         System.out.println();
-                        System.out.printf(" ___________________________\n");
-                        System.out.printf("/                           \\ \n");
-                        System.out.printf("|===========================|\n");
-                        System.out.printf("|    Contato inexistente!   |\n");
-                        System.out.printf("|===========================|\n");
-                        System.out.printf("\\___________________________/\n");
-
+                        System.out.println();
+                        System.out.println();
+                        System.out.printf(" _____________________________________________________ \n");
+                        System.out.printf("/                                                     \\ \n");
+                        System.out.printf("|=====================================================|\n");
+                        System.out.printf("|Digite o nome do contato para editar: \n");
+                        String nomeEditar = input.nextLine();
+                        System.out.printf("|=====================================================|\n");
+                        System.out.printf("\\_____________________________________________________/\n");
+    
+                        
+    
+                        boolean encontradoEdit=false;
+                        for (int i = 0; i < numContatos; i++) {
+                            if (contato[i].getNome().equalsIgnoreCase(nomeEditar)){
+                                System.out.println();
+                                System.out.println();
+                                System.out.printf(" ________________________________________\n");
+                                System.out.printf("/                                        \\ \n");
+                                System.out.printf("|                                        |\n");
+                                System.out.println("|Contato " + (i + 1));
+                                System.out.printf("|                                        |\n");
+                                System.out.println("|Nome: " + contato[i].getNome());
+                                System.out.printf("|Novo nome: ");
+                                String novoNome = input.nextLine();
+                                System.out.printf("|                                        |\n");
+                                contato[i].setNome(novoNome);
+                                System.out.printf("|----------------------------------------|\n");
+                                System.out.printf("|                                        |\n");
+                                System.out.println("|Telefone: " + contato[i].getTelefone() + "\n");
+                                System.out.printf("|Novo telefone: ");
+                                String novoTel = input.nextLine();
+                                contato[i].setTelefone(novoTel);
+                                System.out.printf("|----------------------------------------|\n");
+                                System.out.printf("|    Contato Alterado com sucesso!       |\n");
+                                System.out.printf("\\________________________________________/ \n");
+    
+                                encontradoEdit=true;
+                                break;
+                            }
+                        }
+                        if (encontradoEdit==false){
+                            System.out.println();
+                            System.out.println();
+                            System.out.printf(" ___________________________\n");
+                            System.out.printf("/                           \\ \n");
+                            System.out.printf("|===========================|\n");
+                            System.out.printf("|    Contato inexistente!   |\n");
+                            System.out.printf("|===========================|\n");
+                            System.out.printf("\\___________________________/\n");
+    
+                        }
+                    } catch (Exception e) {
                     }
                     break;
 
