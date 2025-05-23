@@ -1,4 +1,4 @@
-import java.io.IOException;
+    import java.io.IOException;
 import java.nio.file.*;
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +7,7 @@ public class AgendaProf {
  
     private static final Path CAMINHO_ARQUIVO = Paths.get("agenda.txt"); /* Caminho constante para o arquivo */
  
-    public static void main(String[] args) {
+    public static void main(String[] args){
         /* Adicionando contatos manualmente */
         adicionarContato("Marcelo", "1111-1111");
         adicionarContato("Pedro", "2222-2222");
