@@ -26,7 +26,7 @@ public class App {
             System.out.println("\nListagem de Contatos\n");
 
             /* Exibe os títulos, com o mesmo espaçamento (20 espaços para o nome e 15 para o telefone */
-            System.out.printf("%-5s | %-15s | %-15s | %-5s\n", "Nr.", "User", "Espaço utilizado", "% de uso" );
+            System.out.printf("%-5s | %-15s | %17s | %-4s\n", "Nr.", "User", "Espaço utilizado", "% de uso" );
             System.out.println("------------------------------------------------------");
             int i = 0;
             double soma=0;
@@ -40,12 +40,12 @@ public class App {
                 String nome = partes[0];
                 double Mb = (Double.parseDouble(partes[1]))/(1024*1024);
                 double porcent = (Mb/(soma/(1024*1024)))*100;
-                System.out.printf("%-5s | %-15s | %-16.2f | %-5.2f \n", i+1, nome, Mb, porcent);
+                System.out.printf("%-5s | %-15s | %15.2f Mb| %5.2f %% \n", i+1, nome, Mb, porcent);
                 System.out.println("------------------------------------------------------");
                 i++;
             }
-            System.out.printf("Espaço Total Ocupado: %.2f\n", ((soma)/(1024*1024)));
-            System.out.printf("Espaço Médio Ocupado: %.2f\n", ((soma)/(1024*1024))/i);
+            System.out.printf("Espaço Total Ocupado: %.2fMb\n", ((soma)/(1024*1024)));
+            System.out.printf("Espaço Médio Ocupado: %.2fMb\n", ((soma)/(1024*1024))/i);
             
 
 
