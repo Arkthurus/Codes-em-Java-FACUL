@@ -23,7 +23,7 @@ public class AgendaProf {
     }
  
     private static void adicionarContato(String nome, String telefone) {
-        String linha = nome + ";" + telefone; /* Formata os dados */
+        String linha = nome + ";" + telefone; /* Formata os dados q serão guardados no arquivo.txt*/
  
         try {
             /* Escreve a linha no arquivo:
@@ -40,7 +40,7 @@ public class AgendaProf {
         }
     }
  
-    private static void editarContato(String nomeParaEditar, String novoTelefone) {
+    private static void editarContato(String nomeParaEditar, String novoTelefone) { /*Nome do ctt q tera seu numba editado*/
  
         try {
             if (!Files.exists(CAMINHO_ARQUIVO)) {
@@ -48,13 +48,13 @@ public class AgendaProf {
                 return;
             }
  
-            List<String> linhas = Files.readAllLines(CAMINHO_ARQUIVO);
+            List<String> linhas = Files.readAllLines(CAMINHO_ARQUIVO); /*Uma List de Strings recebe todas as linhas do arquivo(cada linha em um indice) */
             boolean encontrado = false;
  
             for (int i = 0; i < linhas.size(); i++) {
-                String[] partes = linhas.get(i).split(";");
+                String[] partes = linhas.get(i).split(";"); /*divide a linha em parte[0] q seria o nome e parte[1] q seria numba */
                 if (partes[0].equalsIgnoreCase(nomeParaEditar)) {
-                    linhas.set(i, partes[0] + ";" + novoTelefone); /* Substitui o telefone */
+                    linhas.set(i, partes[0] + ";" + novoTelefone); /* Substitui o telefone com o comando SET na List */
                     encontrado = true;
                     break; /* Interrompe quando o contato é encontrado */
                 }
@@ -62,7 +62,7 @@ public class AgendaProf {
  
             if (encontrado) {
                 /* Sobrescreve o arquivo com os dados atualizados */
-                Files.write(CAMINHO_ARQUIVO, linhas, StandardOpenOption.TRUNCATE_EXISTING);
+                Files.write(CAMINHO_ARQUIVO, linhas, StandardOpenOption.TRUNCATE_EXISTING);/* Substitui o telefone com no Arquivo.txt */
                 System.out.println("Telefone de " + nomeParaEditar + " atualizado para " + novoTelefone);
             } else {
                 System.out.println("Contato " + nomeParaEditar + " nao encontrado.");
@@ -87,7 +87,7 @@ public class AgendaProf {
             /* Itera sobre a lista e remove o contato com o nome correspondente */
             for (int i = 0; i < linhas.size(); i++) {
                 String[] partes = linhas.get(i).split(";");
-                if (partes[0].equalsIgnoreCase(nomeParaExcluir)) {
+                if (partes[0].equalsIgnoreCase(nomeParaExcluir)) { /*Se a parte da linha correspondente ao nome for igual ao nome para excluir ent exclui */
                     linhas.remove(i); /* Remove o contato */
                     encontrado = true;
                     break; /* Interrompe quando o contato é encontrado */
